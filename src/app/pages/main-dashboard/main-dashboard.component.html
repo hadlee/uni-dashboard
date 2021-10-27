@@ -1,6 +1,6 @@
 <div class="title-box">
     <h1>Semester Name </h1> 
-    <button>Configure</button>
+    <button (click)="openConfigureModal()">Configure</button>
 </div>
 <div class="heading-box">
     <div [ngClass]="selectedHeading == 'overview' ? 'selected-heading-box' : ''" (click)="selectedHeading='overview'">
@@ -39,10 +39,6 @@
 <div class="heading-box">
     <h3>Work</h3>
 </div>
-<div class="tasks-bar">
-    <button>Tasks</button>
-    <button>Planner Tasks</button>
-</div>
 <div class="tasks-box">
     <div>
         <h4>Tasks</h4>
@@ -57,19 +53,19 @@
         <h4>Planner Tasks</h4>
         <div class="bucket-list">
             <div class="bucket">
-                <p>Bucket 1</p>
+                <h3>Bucket 1</h3>
                 <p>Bucket 1 item</p>
                 <p>Bucket 1 item</p>
                 <p>Bucket 1 item</p>
             </div>
             <div class="bucket">
-                <p>Bucket 2</p>
+                <h3>Bucket 2</h3>
                 <p>Bucket 2 item</p>
                 <p>Bucket 2 item</p>
                 <p>Bucket 2 item</p>
             </div>
             <div class="bucket">
-                <p>Bucket 3</p>
+                <h3>Bucket 3</h3>
                 <p>Bucket 3 item</p>
                 <p>Bucket 3 item</p>
                 <p>Bucket 3 item</p>

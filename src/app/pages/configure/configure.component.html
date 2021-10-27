@@ -1,0 +1,29 @@
+<p>
+    <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+        Toggle
+    </button>
+</p>
+<div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+    <div class="card">
+        <div class="card-body">
+            You can collapse this card by clicking Toggle
+        </div>
+    </div>
+</div>
+<!-- do a for loop here through the data -->
+<div>
+    <h1>Units</h1>
+    <div>
+        <h2> Math</h2>
+        <button>Down Arrow</button>
+    </div>
+    <div>
+        <h2> Science</h2>
+        <button>Down Arrow</button>
+    </div>
+    <div>
+        <h2> Physics</h2>
+        <button>Down Arrow</button>
+    </div>
+</div>

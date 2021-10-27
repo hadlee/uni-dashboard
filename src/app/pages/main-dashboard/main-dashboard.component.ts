@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { ConfigureComponent } from '../configure/configure.component';
 
 @Component({
   selector: 'app-main-dashboard',
@@ -9,9 +12,17 @@ export class MainDashboardComponent implements OnInit {
 
   selectedHeading: String = "overview";
 
-  constructor() { }
+  constructor(
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  openConfigureModal() {
+    this.modalService.open(ConfigureComponent, {
+      centered: true
+    })
   }
 
 }
