@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MainDashboardComponent } from './pages/main-dashboard/main-dashboard.component';
 import { ConfigureComponent } from './pages/configure/configure.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,26 @@
+.modal-box {
+    width: 100%;
+    height: 2000px;
+}
+.dropdown-heading {
+    display: inline-flex;
+    justify-content: flex-start;
+    width: 100%; 
+    background-color: lightblue;
+    color: white;
+    flex-shrink: 4;
+    flex-wrap: none;
+
+    input {
+        width: fit-content;
+    }
+}
+
+.dropdown-details {
+    margin-left: 5%;
+}
+
+.configuration-details {
+    max-height: 35%;
+    overflow-y: scroll;
+}

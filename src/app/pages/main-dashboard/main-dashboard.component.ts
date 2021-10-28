@@ -21,7 +21,9 @@ export class MainDashboardComponent implements OnInit {
 
   openConfigureModal() {
     this.modalService.open(ConfigureComponent, {
-      centered: true
+      centered: true,
+      size: "xl",
+      scrollable: true
     })
   }
 
