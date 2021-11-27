@@ -1,7 +1,14 @@
 import { NgbDate } from "@ng-bootstrap/ng-bootstrap";
 
 export interface IConfiguration {
-    units : IUnits[]
+    units : IUnits[],
+    // colorSettings: {
+    //     backgroundColor: String;
+    //     textColor: String;
+    //     buttonColor: String;
+    //     graphColourOne: String;
+    //     graphColourTwo: String;
+    // }
 }
 
 export interface IUnits {
