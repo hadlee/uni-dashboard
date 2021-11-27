@@ -28,7 +28,7 @@ export interface ITasks {
 }
 
 export interface IDetails {
-    name: String;
+    name: string;
     startDate: NgbDate;
     endDate: NgbDate;
     progress: number;

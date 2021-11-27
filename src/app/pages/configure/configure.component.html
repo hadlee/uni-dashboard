@@ -8,11 +8,12 @@
                 <span>Weight: <input type="text" [(ngModel)]="unit.unitDetails.weight">
                     Start: <input placeholder="yyyy-mm-dd" [(ngModel)]="unit.unitDetails.startDate"
                         ngbDatepicker #start="ngbDatepicker">
-                    <img (click)="start.toggle()" src="/assets/calender.png">
+                        <bi name="Calendar3"  (click)="start.toggle()"></bi>  
                     End: <input placeholder="yyyy-mm-dd" [(ngModel)]="unit.unitDetails.endDate"
                         ngbDatepicker #end="ngbDatepicker">
-                    <img (click)="end.toggle()" src="/assets/calender.png">
-                    <button (click)="unit.displayAssignments = !unit.displayAssignments">Down Arrow</button>
+                    <bi name="Calendar3"  (click)="end.toggle()"></bi>               
+                    <bi [name]="unit.displayAssignments ? 'Caret-Down-Fill' : 'Caret-Right-Fill'" (click)="unit.displayAssignments = !unit.displayAssignments"></bi>  
+                    <bi name="backspace" (click)="deleteUnit(unitIndex, unit.unitDetails.name)"></bi>             
                 </span>
             </div>
             <div class="dropdown-details" #collapse="ngbCollapse" [(ngbCollapse)]="unit.displayAssignments">
@@ -23,37 +24,43 @@
                         <span>Weight: <input type="text" [(ngModel)]="assignment.assignmentDetails.weight">
                             Start: <input placeholder="yyyy-mm-dd" [(ngModel)]="assignment.assignmentDetails.startDate"
                                 ngbDatepicker #start="ngbDatepicker">
-                            <img (click)="start.toggle()" src="/assets/calender.png">
+                            <bi name="Calendar3"(click)="start.toggle()"></bi>
                             End: <input placeholder="yyyy-mm-dd" [(ngModel)]="assignment.assignmentDetails.endDate"
                                 ngbDatepicker #end="ngbDatepicker">
-                            <img (click)="end.toggle()" src="/assets/calender.png">
-                            <button (click)="assignment.displayTasks = !assignment.displayTasks">Down Arrow</button>
+                            <bi name="Calendar3" (click)="end.toggle()"></bi>
+                            <bi [name]="assignment.displayTasks ? 'Caret-Down-Fill' : 'Caret-Right-Fill'" (click)="assignment.displayTasks = !assignment.displayTasks"></bi>
+                            <bi name="backspace" (click)="deleteAssignment(unitIndex, assignmentIndex, assignment.assignmentDetails.name)"></bi>  
                         </span>
                     </div>
                     <div class="dropdown-details" #collapse="ngbCollapse" [(ngbCollapse)]="assignment.displayTasks">
                         <h5>Tasks</h5>
-                        <div *ngFor="let task of assignment.tasks">
+                        <div *ngFor="let task of assignment.tasks; let taskIndex = index">
                             <div class="dropdown-heading">
                                 <input type="text" [(ngModel)]="task.taskDetails.name">
                                 <span>Weight: <input type="text" [(ngModel)]="task.taskDetails.weight">
                                     Start: <input placeholder="yyyy-mm-dd" [(ngModel)]="task.taskDetails.startDate"
                                         ngbDatepicker #start="ngbDatepicker">
-                                    <img (click)="start.toggle()" src="/assets/calender.png">
+                                        <bi name="Calendar3"(click)="start.toggle()"></bi>
                                     End: <input placeholder="yyyy-mm-dd" [(ngModel)]="task.taskDetails.endDate"
                                         ngbDatepicker #end="ngbDatepicker">
-                                    <img (click)="end.toggle()" src="/assets/calender.png">
+                                        <bi name="Calendar3"(click)="end.toggle()"></bi>
+                                        <bi name="backspace" (click)="deleteTask(unitIndex, assignmentIndex, taskIndex, task.taskDetails.name)"></bi>  
                                 </span>
                             </div>
                         </div>
-                        <h1 (click)="addNewTask(unitIndex, assignmentIndex)">Add</h1>
+                        <bi name="Plus" (click)="addNewTask(unitIndex, assignmentIndex)"></bi>
+
                     </div>
 
                 </div>
-                <h1 (click)="addNewAssignment(unitIndex)">Add</h1>
+                <bi name="Plus" (click)="addNewAssignment(unitIndex)"></bi>
             </div>
         </div>
         <div>
-            <h1 (click)="addNewUnit()">Add</h1>
-        </div>
+            <bi name="Plus" (click)="addNewUnit()"></bi>
     </div>
 </div>
+
+<ng-template #confirmModal confirmmodal>
+    <app-confirmation-modal [deleteType] = "unitToDeleteType" [name] = "unitToDeleteName" (optionSelected)="test($event)"></app-confirmation-modal>
+</ng-template>

@@ -1,6 +1,6 @@
 import { getLocaleDateFormat } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal, NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { NgbActiveModal, NgbDate, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { IAssignments, IConfiguration, ITasks, IUnits } from 'src/app/models/iconfiguration';
 import { ConfigDataService } from 'src/service/config-data.service';
 
@@ -11,7 +11,7 @@ import { ConfigDataService } from 'src/service/config-data.service';
 })
 export class ConfigureComponent {
 
-
+  @ViewChild('confirmModal') ref: any;
   configuartionDetials!: IConfiguration; 
   // = {
   //   units: [{
@@ -83,9 +83,16 @@ export class ConfigureComponent {
   //   }]
   // }
   isCollapsed: boolean = true;
+  unitToDeleteType: string = "";
+  unitToDeleteName: string = "";
+  unitIndexToDelete!: number;
+  assignmentIndexToDelete!: number;
+  taskIndexToDelete!: number;
+  confirmationModalRef: NgbModalRef | undefined;
 
   constructor( private configDataService: ConfigDataService,
-    private activeModal: NgbActiveModal) { }
+    private activeModal: NgbActiveModal,
+    private modalService: NgbModal) { }
 
   ngOnInit(): void { 
     this.configuartionDetials = this.configDataService.getData()
@@ -169,5 +176,46 @@ export class ConfigureComponent {
 
   saveData() {
     this.configDataService.setData(this.configuartionDetials)
+  }
+
+  openConfirmationMationModal(deleteType: string, deleteName: string ) {
+    this.unitToDeleteName = deleteName;
+    this.unitToDeleteType = deleteType;
+    this.confirmationModalRef = this.modalService.open(this.ref);
+  }
+  deleteUnit(unitIndex: number, unitName: string) {
+    this.openConfirmationMationModal("Unit", unitName)
+    this.unitIndexToDelete = unitIndex;
+    //this.configuartionDetials.units.splice(unitIndex, 1);
+  }
+
+  deleteAssignment(unitIndex:number, assignmentIndex: number, unitName: string) {
+    this.openConfirmationMationModal("Assignment", unitName)
+    this.unitIndexToDelete = unitIndex;
+    this.assignmentIndexToDelete = assignmentIndex
+  }
+
+  deleteTask(unitIndex:number, assignmentIndex: number, taskIndex: number, unitName: string) {
+    this.openConfirmationMationModal("Task", unitName)
+    this.unitIndexToDelete = unitIndex;
+    this.assignmentIndexToDelete = assignmentIndex;
+    this.taskIndexToDelete = taskIndex;
+  }
+
+  test(event: boolean) {
+    if(event) {
+      switch(this.unitToDeleteType) {
+        case("Unit"):
+          this.configuartionDetials.units.splice(this.unitIndexToDelete, 1);
+          break;
+        case("Assignment"):
+          this.configuartionDetials.units[this.unitIndexToDelete].assignments.splice(this.assignmentIndexToDelete, 1);
+          break;
+        case("Task"):
+          this.configuartionDetials.units[this.unitIndexToDelete].assignments[this.unitIndexToDelete].tasks.splice(this.taskIndexToDelete, 1)
+          break;
+      }
+    }
+    this.confirmationModalRef?.close();
   }
 }
