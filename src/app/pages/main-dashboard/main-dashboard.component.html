@@ -29,12 +29,10 @@
     </div>
 </div>
 <div *ngIf="selectedHeading == 'currentAssignment'">
-    <p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p>
-    <p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p>
-    <p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p>
-    <p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p>
-    <p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p>
-    <p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p><p>currentAssignment</p>
+    <div *ngFor="let currentAssignment of currentAssignments">
+        <h1> {{currentAssignment.assignmentDetails.name}}</h1>
+    </div>
+    
 </div>
 <div class="heading-box">
     <h3>Work</h3>
