@@ -32,14 +32,12 @@ export class MainDashboardComponent implements OnInit {
     this.currentAssignments = []
     this.configData.units?.forEach((unit) => {
       unit.assignments?.forEach((assignment) => {
-        console.log(assignment)
         if(this.dateBeforeToday(assignment.assignmentDetails.startDate) &&
         this.dateAfterToday(assignment.assignmentDetails.endDate)) {
           this.currentAssignments.push(assignment)
         }
       })
     })
-    console.log(this.currentAssignments)
     return true
   }
 
@@ -61,42 +59,17 @@ export class MainDashboardComponent implements OnInit {
   }
 
   dateAfterToday(dates: NgbDate) {
-    const date = new Date();
-    const currentDate = new NgbDate(date.getUTCFullYear(), date.getUTCMonth() + 1,date.getUTCDate());
-    if(dates.year > currentDate.year) {
-      console.log("failing on year")
-      return true;
-    }
-    else if( dates.month > currentDate.month) {
-      console.log("failing on month")
-      return true;
-    }
-    else if(dates.day >= currentDate.day) {
-      console.log("failing on day")
-        return true;
-      }
-    return false;
+    const currentDate = new Date();
+    const currentDates = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate())
+    const date = new Date(dates.year, dates.month-1, dates.day);
+    return currentDates.getTime() <= date.getTime();
   }
 
 
   dateBeforeToday(dates: NgbDate) {
-    const date = new Date();
-    const currentDate = new NgbDate(date.getUTCFullYear(), date.getUTCMonth() + 1,date.getUTCDate());
-    console.log(dates)
-    if(dates.year < currentDate.year) {
-      console.log(currentDate.year)
-      console.log("failing on year 2")
-      return true;
-    }
-    else if( dates.month < currentDate.month) {
-      console.log("failing on month 2")
-      console.log(currentDate.month)
-      return true;
-    }
-    else if(dates.day <= currentDate.day) {
-      console.log("failing on day 2")
-        return true;
-      }
-    return false;
+    const currentDate = new Date();
+    const currentDates = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate())
+    const date = new Date(dates.year, dates.month-1, dates.day);
+    return currentDates.getTime() >= date.getTime();
   }
 }
