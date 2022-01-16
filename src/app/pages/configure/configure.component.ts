@@ -96,9 +96,7 @@ export class ConfigureComponent {
 
   ngOnInit(): void { 
     this.configuartionDetials = this.configDataService.getData()
-
-
-   }
+  }
 
 
   addNewUnit() {

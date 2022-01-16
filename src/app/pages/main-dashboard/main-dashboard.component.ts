@@ -16,6 +16,7 @@ export class MainDashboardComponent implements OnInit {
 
   configData!: IConfiguration;
   currentAssignments: IAssignments[] = [];
+  currentPlannedTasks: IAssignments[] = []
 
   constructor(
     private modalService: NgbModal,
@@ -71,5 +72,11 @@ export class MainDashboardComponent implements OnInit {
     const currentDates = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate())
     const date = new Date(dates.year, dates.month-1, dates.day);
     return currentDates.getTime() >= date.getTime();
+  }
+
+  setAssignment(bucketNum: number, assignmentIndex: number) {
+    this.currentAssignments[assignmentIndex].bucketNum = bucketNum;
+    this.currentPlannedTasks[bucketNum] = this.currentAssignments[assignmentIndex];
+    this.configDataService.setData(this.currentAssignments);
   }
 }

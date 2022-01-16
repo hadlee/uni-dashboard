@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IConfiguration } from 'src/app/models/iconfiguration';
+
 
 
 @Injectable({

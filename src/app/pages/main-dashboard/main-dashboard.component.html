@@ -31,6 +31,10 @@
 <div *ngIf="selectedHeading == 'currentAssignment'">
     <div *ngFor="let currentAssignment of currentAssignments">
         <h1> {{currentAssignment.assignmentDetails.name}}</h1>
+        <div *ngFor="let task of currentAssignment.tasks">
+            <h2>{{task.taskDetails.name}}</h2>
+        </div>
+       
     </div>
     
 </div>
@@ -51,19 +55,19 @@
         <h4>Planner Tasks</h4>
         <div class="bucket-list">
             <div class="bucket">
-                <h3>Bucket 1</h3>
+                <h3>{{currentPlannedTasks[0]?.assignmentDetails?.name}}  <bi name="Plus" (click)="setAssignment(0,0 )"></bi></h3>
                 <p>Bucket 1 item</p>
                 <p>Bucket 1 item</p>
                 <p>Bucket 1 item</p>
             </div>
             <div class="bucket">
-                <h3>Bucket 2</h3>
+                <h3>{{currentPlannedTasks[1]?.assignmentDetails?.name}}</h3>
                 <p>Bucket 2 item</p>
                 <p>Bucket 2 item</p>
                 <p>Bucket 2 item</p>
             </div>
             <div class="bucket">
-                <h3>Bucket 3</h3>
+                <h3>{{currentPlannedTasks[2]?.assignmentDetails?.name}}</h3>
                 <p>Bucket 3 item</p>
                 <p>Bucket 3 item</p>
                 <p>Bucket 3 item</p>

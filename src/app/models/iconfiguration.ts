@@ -20,11 +20,13 @@ export interface IUnits {
 export interface IAssignments {
     assignmentDetails: IDetails;
     displayTasks: boolean;
-    tasks: ITasks[]
+    tasks: ITasks[];
+    bucketNum?: number;
 }
 
 export interface ITasks {
     taskDetails: IDetails
+    bucketItemNum?: number;
 }
 
 export interface IDetails {
