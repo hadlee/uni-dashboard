@@ -1,0 +1,36 @@
+// Time is non solid bar
+.time-bar{
+    background: pink;
+}
+
+
+.progress-bar {
+    background: repeating-linear-gradient(
+        45deg,
+        purple,
+        purple 10px,
+    transparent 10px,
+    transparent 20px
+        );
+}
+
+.border {
+    height: 20px;
+    width: 500px;
+    min-width: 100px;
+    background-color: lightgray;
+    padding: 0;
+    margin:0;
+    position: relative;
+    * {
+        position: absolute;
+        color: white;
+        top: 0;
+        left: 0;
+        height: 18px;
+    }
+}
+
+.gray-background { 
+    background: lightgray;
+}

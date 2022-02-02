@@ -1,6 +1,6 @@
 <div class="title-box">
     <h1>Semester Name </h1> 
-    <button (click)="openConfigureModal()">Configure</button>
+    <button (click)="openConfigureModal()" class="myButton">Configure</button>
 </div>
 <div class="heading-box">
     <div [ngClass]="selectedHeading == 'overview' ? 'selected-heading-box' : ''" (click)="selectedHeading='overview'">
@@ -29,10 +29,14 @@
     </div>
 </div>
 <div *ngIf="selectedHeading == 'currentAssignment'">
-    <div *ngFor="let currentAssignment of currentAssignments">
-        <h1> {{currentAssignment.assignmentDetails.name}}</h1>
-        <div *ngFor="let task of currentAssignment.tasks">
-            <h2>{{task.taskDetails.name}}</h2>
+    <div *ngFor="let currentUnit of currentUnits">
+        <h1> {{currentUnit.unitDetails.name}}</h1>
+        <app-bar-graph [progress]="'80%'" [time]="calculateTimePercent(currentUnit.unitDetails)"></app-bar-graph>
+        <div *ngFor="let assignment of currentUnit.assignments">
+            <h2>{{assignment.assignmentDetails.name}}</h2>
+            <div style="display: block">
+                <app-bar-graph [progress]="assignment.assignmentDetails.progress+'%'" [time]="calculateTimePercent(assignment.assignmentDetails)"></app-bar-graph>
+            </div>
         </div>
        
     </div>

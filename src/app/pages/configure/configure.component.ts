@@ -95,7 +95,7 @@ export class ConfigureComponent {
     private modalService: NgbModal) { }
 
   ngOnInit(): void { 
-    this.configuartionDetials = this.configDataService.getData()
+    this.configuartionDetials = this.configDataService.getData();
   }
 
 

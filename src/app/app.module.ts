@@ -11,6 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BootstrapIconsModule } from 'ng-bootstrap-icons';
 import { CaretRightFill, CaretDownFill, Calendar3, Plus, Backspace } from 'ng-bootstrap-icons/icons';
 import { ConfirmationModalComponent } from './pages/confirmation-modal/confirmation-modal.component';
+import { NgChartsModule } from 'ng2-charts';
+import { BarGraphComponent } from './pages/bar-graph/bar-graph.component';
+
 
 const icons = {
   CaretRightFill,
@@ -25,7 +28,8 @@ const icons = {
     AppComponent,
     MainDashboardComponent,
     ConfigureComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    BarGraphComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,8 @@ const icons = {
     NgbModule,
     FormsModule,
     HttpClientModule,
-    BootstrapIconsModule.pick(icons)
+    BootstrapIconsModule.pick(icons),
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

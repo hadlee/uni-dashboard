@@ -1,10 +1,13 @@
+* {
+    font-family: Helvetica, sans-serif;
+}
 .someclass {
     border: px black solid;
 }
 .title-box {
     display: inline-flex;
     width: 100%;
-
+    margin-bottom: 1%;
     h1 {
         margin: auto
     }
@@ -15,23 +18,30 @@
 }
 
 .heading-box {
-    background-color: darkblue;
+    background-color: #92cbdf;
     border-radius: 10px;
     color: white;
     display: inline-flex;
     width: 100%;
+    margin-bottom: 1%;
+    justify-content: space-evenly;
+    text-align: center;
+
     div {
         width: 50%;
     }
 
     h3 {
-        margin:auto
+        margin:auto;
+        font-size: 1.3em;
+        padding: 5px;
     }
 }
 
 .selected-heading-box {
-    background-color: lightblue;
+    background-color: #2596be;
     border-radius: 10px;
+
 }
 
 .overview-box {
@@ -39,6 +49,7 @@
     flex-wrap: nowrap;
     justify-content: space-evenly;
     width: 100%;
+    margin-bottom: 1%;
 
     .unit-grades {
         display: inline-flex;
@@ -113,4 +124,26 @@
             }
         }
     }
+}
+
+.myButton {
+    box-shadow:inset 0px 11px 7px 2px #dcecfb;
+    background:linear-gradient(to bottom, #92cbdf 10%, #2596be 100%);
+    background-color:#2596be;
+    border-radius:19px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    border: none;
+    // font-family:Trebuchet MS;
+    font-size:17px;
+    font-weight:bold;
+    padding:9px 18px;
+    text-decoration:none;
+    text-shadow:2px 0px 5px #528ecc;
+    margin-top:1%;
+}
+.myButton:hover {
+    background:linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
+    background-color:#80b5ea;
 }
